@@ -3,6 +3,7 @@ Author:durow
 Date:2015.10.11
 Binding command
 */
+
 using System;
 using System.Windows.Input;
 

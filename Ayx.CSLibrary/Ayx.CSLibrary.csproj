@@ -52,7 +52,7 @@
     <Compile Include="MVVM\AyxCommand.cs" />
     <Compile Include="MVVM\AyxCommandGeneric.cs" />
     <Compile Include="MVVM\AyxEventCommand.cs" />
-    <Compile Include="MVVM\ObserveObject.cs" />
+    <Compile Include="MVVM\NotificationObject.cs" />
     <Compile Include="Net\TCP\AyxTcpClient.cs" />
     <Compile Include="Net\TCP\AyxTcpMessage.cs" />
     <Compile Include="Net\TCP\AyxTcpServer.cs" />

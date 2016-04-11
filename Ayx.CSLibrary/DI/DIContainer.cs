@@ -82,7 +82,7 @@ namespace Ayx.CSLibrary.DI
                 return;
         }
 
-        private bool CheckEqual(InjectInfo info, Type t, string token)
+        public bool CheckEqual(InjectInfo info, Type t, string token)
         {
             if(string.IsNullOrEmpty(token))
             {
@@ -97,7 +97,7 @@ namespace Ayx.CSLibrary.DI
                 return false;
         }
 
-        private bool CheckExist<Tfrom>(string token)
+        public bool CheckExist<Tfrom>(string token)
         {
             return false;
         }

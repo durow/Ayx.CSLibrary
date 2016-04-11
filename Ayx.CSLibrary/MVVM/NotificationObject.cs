@@ -9,7 +9,7 @@ using System.ComponentModel;
 
 namespace Ayx.CSLibrary.MVVM
 {
-    public class ObserveObject:INotifyPropertyChanged
+    public class NotificationObject:INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
