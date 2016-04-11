@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 
 namespace Ayx.CSLibrary.DI
 {
@@ -48,18 +48,24 @@ namespace Ayx.CSLibrary.DI
             injectInfoList.Add(info);
         }
 
-        public T GetInstance<T>(string token = "")
+        public void WireVM<TView, TViewModel>(string token = "", Func<object> createFunc = null)
+            where TView : UIElement where TViewModel : INotifyPropertyChanged
         {
-            var temp = injectInfoList.Where(i => i.From == typeof(T));
-            if (!string.IsNullOrEmpty(token))
-                temp = temp.Where(i => i.Token == token);
-            return (T)temp.FirstOrDefault().GetObject();
+            var info = InjectInfo.Create<TView, TViewModel>(token,InjectType.ViewModel, createFunc);
+            injectInfoList.Add(info);
         }
 
-        public T CheckInstance<T>(T item, string token = "")
+        public T Get<T>(string token = "")
         {
-            if (item != null) return item;
-            return GetInstance<T>(token);
+            var resultList = GetInjectionInfo<T>(token);
+            return (T)resultList.FirstOrDefault().GetObject();
+        }
+
+        public object GetVM<TView>(string token = "")
+        {
+            var resultList = GetInjectionInfo<TView>(token);
+            resultList = resultList.Where(p => p.InjectType == InjectType.ViewModel);
+            return resultList.FirstOrDefault().GetObject();
         }
 
         public void Remove<T>(string token = "")
@@ -82,9 +88,27 @@ namespace Ayx.CSLibrary.DI
                 return;
         }
 
-        public bool CheckEqual(InjectInfo info, Type t, string token)
+        public bool CheckExist<Tfrom>(string token = "")
         {
-            if(string.IsNullOrEmpty(token))
+            var resultList = GetInjectionInfo<Tfrom>(token);
+            return resultList.Any();
+        }
+
+        #region Private Methods
+
+        private IEnumerable<InjectInfo> GetInjectionInfo<T>(string token = "")
+        {
+            var result = injectInfoList.Where(p => p.From == typeof(T));
+            if (!string.IsNullOrEmpty(token))
+            {
+                result = result.Where(p => p.Token == token);
+            }
+            return result;
+        }
+
+        private bool CheckEqual(InjectInfo info, Type t, string token)
+        {
+            if (string.IsNullOrEmpty(token))
             {
                 if (info.From == t)
                     return true;
@@ -97,9 +121,6 @@ namespace Ayx.CSLibrary.DI
                 return false;
         }
 
-        public bool CheckExist<Tfrom>(string token)
-        {
-            return false;
-        }
+        #endregion
     }
 }
