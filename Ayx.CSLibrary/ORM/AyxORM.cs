@@ -45,7 +45,7 @@ namespace Ayx.CSLibrary.ORM
             var conStr = "Provider=Microsoft.Jet.OLEDB.4.0;" +
                          "Data Source=" + fileName;
             if (!string.IsNullOrEmpty(password))
-                conStr += "Jet OLEDB:Database Password=" + password;
+                conStr += ";Jet OLEDB:Database Password=" + password;
             return new AyxORM(new OleDbFactory(conStr, "Access"));
         }
 
@@ -320,7 +320,10 @@ namespace Ayx.CSLibrary.ORM
 
         public void AddDataParameter<T>(IDbCommand cmd, T item, PropertyInfo property)
         {
-            AddDataParameter(cmd, "@" + property.Name, property.GetValue(item, null));
+            var value = property.GetValue(item, null);
+            if (value == null)
+                value = DBNull.Value;
+            AddDataParameter(cmd, "@" + property.Name, value);
         }
         public IDbConnection GetConnection(IDbTransaction transaction)
         {
