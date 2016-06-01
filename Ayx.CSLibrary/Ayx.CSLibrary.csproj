@@ -49,6 +49,7 @@
     <Compile Include="DI\InjectInfo.cs" />
     <Compile Include="DI\InjectType.cs" />
     <Compile Include="Extension\StringBuilderExtension.cs" />
+    <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="MVVM\AyxCommand.cs" />
     <Compile Include="MVVM\AyxCommandGeneric.cs" />
     <Compile Include="MVVM\AyxEventCommand.cs" />
@@ -75,6 +76,9 @@
     <Compile Include="Security\Md5Helper.cs" />
     <Compile Include="Security\RsaHelper.cs" />
     <Compile Include="Utility\ConfigFile.cs" />
+    <Compile Include="Utility\Config\IConfigFile.cs" />
+    <Compile Include="Utility\Config\PathHelper.cs" />
+    <Compile Include="Utility\Config\XmlConfigFile.cs" />
     <Compile Include="Utility\ScreenShot.cs" />
     <Compile Include="Utility\StopWatch.cs" />
   </ItemGroup>
