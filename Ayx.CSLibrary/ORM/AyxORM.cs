@@ -45,7 +45,7 @@ namespace Ayx.CSLibrary.ORM
             var conStr = "Provider=Microsoft.Jet.OLEDB.4.0;" +
                          "Data Source=" + fileName;
             if (!string.IsNullOrEmpty(password))
-                conStr += "Jet OLEDB:Database Password=" + password;
+                conStr += ";Jet OLEDB:Database Password=" + password;
             return new AyxORM(new OleDbFactory(conStr, "Access"));
         }
 
