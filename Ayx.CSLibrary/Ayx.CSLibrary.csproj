@@ -75,9 +75,7 @@
     <Compile Include="Security\DesHelper.cs" />
     <Compile Include="Security\Md5Helper.cs" />
     <Compile Include="Security\RsaHelper.cs" />
-    <Compile Include="Utility\ConfigFile.cs" />
     <Compile Include="Utility\Config\IConfigFile.cs" />
-    <Compile Include="Utility\Config\PathHelper.cs" />
     <Compile Include="Utility\Config\XmlConfigFile.cs" />
     <Compile Include="Utility\ScreenShot.cs" />
     <Compile Include="Utility\StopWatch.cs" />
