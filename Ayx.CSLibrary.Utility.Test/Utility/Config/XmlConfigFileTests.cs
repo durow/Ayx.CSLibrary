@@ -52,7 +52,42 @@ namespace Ayx.CSLibrary.Utility.Config.Tests
         [TestMethod()]
         public void GetTest()
         {
-            Assert.Fail();
+            var datetime = DateTime.Now;
+            var test = new XmlConfigFile(testFile);
+            test["Generic.IntTest"] = 1234.ToString();
+            test["Generic.BoolTest"] = true.ToString();
+            test["Generic.DateTest"] = datetime.ToString();
+
+            var test2 = new XmlConfigFile(testFile);
+            Assert.AreEqual(1234, test2.Get<int>("Generic.IntTest"));
+            Assert.AreEqual(true, test2.Get<bool>("Generic.BoolTest"));
+            Assert.AreEqual(datetime.ToString(), test2.Get<DateTime>("Generic.DateTest").ToString());
+        }
+
+        [TestMethod]
+        public void SetTest()
+        {
+            var time = DateTime.Now;
+            var test = new XmlConfigFile(testFile);
+            test["SetTest"] = time.ToString();
+
+            var test2 = new XmlConfigFile(testFile);
+            Assert.AreEqual(test2["SetTest"], time.ToString());
+        }
+
+        [TestMethod]
+        public void DeleteTest()
+        {
+            var test = new XmlConfigFile(testFile);
+            test["DelTest"] = "test";
+
+            var test2 = new XmlConfigFile(testFile);
+            Assert.AreEqual(test2["DelTest"], "test");
+            test2.Delete("DelTest");
+
+            var test3 = new XmlConfigFile(testFile);
+            Assert.IsNull(test3["DelTest"]);
+            
         }
     }
 }

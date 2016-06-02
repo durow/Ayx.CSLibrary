@@ -98,7 +98,7 @@ namespace Ayx.CSLibrary.Utility.Config
             if (node == null)
                 Add(path, value);
             else
-                node.InnerText = value;
+                Set(path, value);
         }
 
         /// <summary>
@@ -124,7 +124,8 @@ namespace Ayx.CSLibrary.Utility.Config
             var node = GetNode(path);
             if (node == null) return;
 
-            Doc.RemoveChild(node);
+            node.ParentNode.RemoveChild(node);
+            Doc.Save(FileName);
         }
 
         /// <summary>
