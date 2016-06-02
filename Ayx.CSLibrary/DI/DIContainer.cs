@@ -63,19 +63,25 @@ namespace Ayx.CSLibrary.DI
 
         public T Get<T>(string token = "")
         {
-            var resultList = GetInjectionInfo<T>(token);
-            var result = (T)resultList.FirstOrDefault().GetObject();
+            return (T)Get(typeof(T), token);
+        }
 
-            foreach (var property in typeof(T).GetProperties())
+        public object Get(Type fromType, string token = "")
+        {
+            var resultList = GetInjectionInfo(fromType,token);
+            var result = resultList.FirstOrDefault().GetObject();
+
+            foreach (var property in fromType.GetProperties())
             {
-                if (!(property is Object))
+                if (property.PropertyType.IsValueType)
                     continue;
-                if (!AttributeHelper.CheckAttribute<AutoInjectAttribute>(property))
+                var attr = AttributeHelper.GetAttribute<AutoInjectAttribute>(property);
+                if (attr == null)
                     continue;
 
                 var valueType = property.PropertyType;
-                var propertyValue = Get<ValueType>();
-
+                var propertyValue = Get(valueType, attr.Token);
+                property.SetValue(result, propertyValue,null);
             }
 
             return result;
@@ -83,7 +89,7 @@ namespace Ayx.CSLibrary.DI
 
         public object GetVM<TView>(string token = "")
         {
-            return GetInjectionInfo<TView>(token)
+            return GetInjectionInfo(typeof(TView), token)
                 .Where(p => p.InjectType == InjectType.ViewModel)
                 .FirstOrDefault()
                 .GetObject();
@@ -117,9 +123,9 @@ namespace Ayx.CSLibrary.DI
 
         #region Private Methods
 
-        private IEnumerable<InjectInfo> GetInjectionInfo<T>(string token = "")
+        private IEnumerable<InjectInfo> GetInjectionInfo(Type type, string token = "")
         {
-            var result = injectInfoList.Where(p => p.From == typeof(T));
+            var result = injectInfoList.Where(p => p.From == type);
             if (!string.IsNullOrEmpty(token))
             {
                 result = result.Where(p => p.Token == token);
