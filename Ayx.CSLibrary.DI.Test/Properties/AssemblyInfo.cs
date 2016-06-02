@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Ayx.CSLibrary")]
+[assembly: AssemblyTitle("Ayx.CSLibrary.DI.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sky123.Org")]
-[assembly: AssemblyProduct("Ayx.CSLibrary")]
+[assembly: AssemblyProduct("Ayx.CSLibrary.DI.Test")]
 [assembly: AssemblyCopyright("Copyright © Sky123.Org 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("a351c334-b0b6-45b2-aad3-d29b0b82f510")]
+[assembly: Guid("e8b9c5b8-43a5-423e-baf6-9d035a194b7b")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
@@ -34,6 +34,3 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: InternalsVisibleTo("Ayx.CSLibrary.Tests")]
-[assembly: InternalsVisibleTo("Ayx.CSLibrary.Explorables")]
-

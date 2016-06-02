@@ -185,6 +185,11 @@ namespace Ayx.CSLibrary.ORM
             var mapping = FieldMapping.GetUpdateMapping<T>();
             var sql = SQLGenerator.GetUpdateSQL<T>(mapping);
             var cmd = GetCommand(sql, item, transaction);
+            var keyProperty = DbAttributes.GetPrimaryKeyProperty<T>();
+            var keyParam = GetCommandParameter(cmd, "@" + keyProperty.Name);
+            if (keyParam != null)
+                cmd.Parameters.Remove(keyParam);
+            AddDataParameter(cmd, "@" + keyProperty.Name, keyProperty.GetValue(item, null));
             return ExecuteNonQuery(cmd);
         }
 
@@ -194,6 +199,8 @@ namespace Ayx.CSLibrary.ORM
                 return Update<T>(item, transaction);
             var sql = SQLGenerator.GetUpdateSQL<T>(fields);
             var cmd = GetCommand(sql, item,transaction);
+            var keyProperty = DbAttributes.GetPrimaryKeyProperty<T>();
+            AddDataParameter(cmd, "@" + keyProperty.Name, keyProperty.GetValue(item, null));
             return ExecuteNonQuery(cmd);
         }
 
@@ -320,7 +327,10 @@ namespace Ayx.CSLibrary.ORM
 
         public void AddDataParameter<T>(IDbCommand cmd, T item, PropertyInfo property)
         {
-            AddDataParameter(cmd, "@" + property.Name, property.GetValue(item, null));
+            var value = property.GetValue(item, null);
+            if (value == null)
+                value = DBNull.Value;
+            AddDataParameter(cmd, "@" + property.Name, value);
         }
         public IDbConnection GetConnection(IDbTransaction transaction)
         {
@@ -365,6 +375,21 @@ namespace Ayx.CSLibrary.ORM
             result.SelectCommand = cmd;
             return result;
         }
+
+        #endregion
+
+        #region Private Methods
+
+        private object GetCommandParameter(IDbCommand cmd,string paramName)
+        {
+            foreach (IDbDataParameter param in cmd.Parameters)
+            {
+                if (param.ParameterName == paramName)
+                    return param;
+            }
+            return null;
+        }
+
         #endregion
     }
 }
