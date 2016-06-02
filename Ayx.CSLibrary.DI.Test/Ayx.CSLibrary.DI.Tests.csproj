@@ -53,7 +53,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DI\DIContainerTests.cs" />
+    <Compile Include="DI\TestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ayx.CSLibrary\Ayx.CSLibrary.csproj">
+      <Project>{A351C334-B0B6-45B2-AAD3-D29B0B82F510}</Project>
+      <Name>Ayx.CSLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -9,13 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{67F8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ayx.CSLibraryTests", "Ayx.CSLibraryTests\Ayx.CSLibraryTests.csproj", "{8D64C684-A54B-467D-AEE5-EA130618E539}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ayx.CSLibrary.Utility.Test", "Ayx.CSLibrary.Utility.Test\Ayx.CSLibrary.Utility.Test.csproj", "{37B4F1AC-1504-4271-B413-62103B5A097B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ayx.CSLibrary.Utility.Tests", "Ayx.CSLibrary.Utility.Test\Ayx.CSLibrary.Utility.Tests.csproj", "{37B4F1AC-1504-4271-B413-62103B5A097B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ayx.CSLibrary.ORM.Test", "Ayx.CSLibrary.ORM.Test\Ayx.CSLibrary.ORM.Test.csproj", "{B47BC5F4-83D2-467C-A129-6277321C3582}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ayx.CSLibrary.ORM.Tests", "Ayx.CSLibrary.ORM.Test\Ayx.CSLibrary.ORM.Tests.csproj", "{B47BC5F4-83D2-467C-A129-6277321C3582}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ayx.CSLibrary.DI.Test", "Ayx.CSLibrary.DI.Test\Ayx.CSLibrary.DI.Test.csproj", "{E8B9C5B8-43A5-423E-BAF6-9D035A194B7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ayx.CSLibrary.DI.Tests", "Ayx.CSLibrary.DI.Test\Ayx.CSLibrary.DI.Tests.csproj", "{E8B9C5B8-43A5-423E-BAF6-9D035A194B7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ayx.CSLibrary.Extension.Test", "Ayx.CSLibrary.Extension.Test\Ayx.CSLibrary.Extension.Test.csproj", "{ECC28E39-0AB1-4190-A7F2-EBB4F7FC13BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ayx.CSLibrary.Extension.Tests", "Ayx.CSLibrary.Extension.Test\Ayx.CSLibrary.Extension.Tests.csproj", "{ECC28E39-0AB1-4190-A7F2-EBB4F7FC13BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

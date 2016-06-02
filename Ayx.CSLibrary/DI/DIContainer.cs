@@ -48,10 +48,20 @@ namespace Ayx.CSLibrary.DI
             injectInfoList.Add(info);
         }
 
+        public void Wire<T>(string token = "", Func<object> createFunc = null)
+        {
+            Wire<T, T>(token, createFunc);
+        }
+
         public  void WireSingleton<Tfrom,Tto>(string token = "", Func<object> createFunc = null) where Tto:Tfrom
         {
             var info = InjectInfo.Create<Tfrom, Tto>(token, InjectType.Singleton, createFunc);
             injectInfoList.Add(info);
+        }
+
+        public void WireSingleton<T>(string token = "", Func<object> createFunc = null)
+        {
+            WireSingleton<T, T>();
         }
 
         public void WireVM<TView, TViewModel>(string token = "", Func<object> createFunc = null)
@@ -69,6 +79,8 @@ namespace Ayx.CSLibrary.DI
         public object Get(Type fromType, string token = "")
         {
             var resultList = GetInjectionInfo(fromType,token);
+            if (!resultList.Any()) return null;
+
             var result = resultList.FirstOrDefault().GetObject();
 
             foreach (var property in fromType.GetProperties())
@@ -77,6 +89,8 @@ namespace Ayx.CSLibrary.DI
                     continue;
                 var attr = AttributeHelper.GetAttribute<AutoInjectAttribute>(property);
                 if (attr == null)
+                    continue;
+                if (property.GetValue(result, null) != null)
                     continue;
 
                 var valueType = property.PropertyType;
@@ -89,10 +103,7 @@ namespace Ayx.CSLibrary.DI
 
         public object GetVM<TView>(string token = "")
         {
-            return GetInjectionInfo(typeof(TView), token)
-                .Where(p => p.InjectType == InjectType.ViewModel)
-                .FirstOrDefault()
-                .GetObject();
+            return Get(typeof(TView), token);
         }
 
         public void Remove<T>(string token = "")
@@ -117,7 +128,7 @@ namespace Ayx.CSLibrary.DI
 
         public bool CheckExist<Tfrom>(string token = "")
         {
-            var resultList = GetInjectionInfo<Tfrom>(token);
+            var resultList = GetInjectionInfo(typeof(Tfrom), token);
             return resultList.Any();
         }
 
