@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Author:durow
+ * Date:2015.12.30
+ */
+
+using Ayx.CSLibrary.Utility;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -58,14 +64,29 @@ namespace Ayx.CSLibrary.DI
         public T Get<T>(string token = "")
         {
             var resultList = GetInjectionInfo<T>(token);
-            return (T)resultList.FirstOrDefault().GetObject();
+            var result = (T)resultList.FirstOrDefault().GetObject();
+
+            foreach (var property in typeof(T).GetProperties())
+            {
+                if (!(property is Object))
+                    continue;
+                if (!AttributeHelper.CheckAttribute<AutoInjectAttribute>(property))
+                    continue;
+
+                var valueType = property.PropertyType;
+                var propertyValue = Get<ValueType>();
+
+            }
+
+            return result;
         }
 
         public object GetVM<TView>(string token = "")
         {
-            var resultList = GetInjectionInfo<TView>(token);
-            resultList = resultList.Where(p => p.InjectType == InjectType.ViewModel);
-            return resultList.FirstOrDefault().GetObject();
+            return GetInjectionInfo<TView>(token)
+                .Where(p => p.InjectType == InjectType.ViewModel)
+                .FirstOrDefault()
+                .GetObject();
         }
 
         public void Remove<T>(string token = "")

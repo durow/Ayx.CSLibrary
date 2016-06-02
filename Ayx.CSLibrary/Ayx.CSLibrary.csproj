@@ -45,6 +45,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DI\AutoInjectAttribute.cs" />
     <Compile Include="DI\DIContainer.cs" />
     <Compile Include="DI\InjectInfo.cs" />
     <Compile Include="DI\InjectType.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Security\DesHelper.cs" />
     <Compile Include="Security\Md5Helper.cs" />
     <Compile Include="Security\RsaHelper.cs" />
+    <Compile Include="Utility\AttributeHelper.cs" />
     <Compile Include="Utility\Config\IConfigFile.cs" />
     <Compile Include="Utility\Config\XmlConfigFile.cs" />
     <Compile Include="Utility\ScreenShot.cs" />

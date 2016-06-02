@@ -52,13 +52,15 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility\Config\XmlConfigFileTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ayx.CSLibrary\Ayx.CSLibrary.csproj">
       <Project>{A351C334-B0B6-45B2-AAD3-D29B0B82F510}</Project>
       <Name>Ayx.CSLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utility\Config\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
