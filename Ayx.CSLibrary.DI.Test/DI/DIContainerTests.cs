@@ -40,16 +40,16 @@ namespace Ayx.CSLibrary.DI.Tests
         }
 
         [TestMethod]
-        public void GetErrorTest()
+        public void AutoCreateTest()
         {
             var container = new DIContainer();
 
             var test = container.Get<DIClass>();
-            Assert.IsNull(test);
+            Assert.AreEqual(test.B.C.IntPorperty, 3333);
         }
 
         [TestMethod]
-        public void GetErrorTest2()
+        public void AutoCreateTest2()
         {
             var container = new DIContainer();
 
@@ -58,9 +58,31 @@ namespace Ayx.CSLibrary.DI.Tests
 
             var test = container.Get<DIClass>();
 
-            Assert.IsNotNull(test);
-            Assert.IsNotNull(test.B);
-            Assert.IsNull(test.B.C);
+            Assert.IsNotNull(test.B.C);
+        }
+
+        [TestMethod]
+        public void ConstructorTest()
+        {
+            var container = new DIContainer();
+
+            var test = container.Get<ParamClass>();
+
+            Assert.AreEqual(test.IntProperty, 0);
+            Assert.AreEqual(test.StringProperty, "param");
+            Assert.AreEqual(test.A.B.C.IntPorperty, 3333);
+        }
+
+        [TestMethod]
+        public void MultiParamConstructorTest()
+        {
+            var container = new DIContainer();
+
+            var test = container.Get<MultiParamClass>();
+
+            Assert.AreEqual(200, test.IntProperty);
+            Assert.AreEqual( "inject", test.StringProperty);
+            Assert.IsNull(test.A);
         }
     }
 }

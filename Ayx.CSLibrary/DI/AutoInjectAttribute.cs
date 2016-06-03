@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Ayx.CSLibrary.DI
 {
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Property|AttributeTargets.Constructor, AllowMultiple = false)]
     public sealed class AutoInjectAttribute:Attribute
     {
         public string Token { get; private set; }

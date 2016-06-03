@@ -51,8 +51,34 @@ namespace Ayx.CSLibrary.DI.Test.DI
     {
         public int IntProperty { get; set; }
         public string StringProperty { get; set; }
+        public DIClass A { get; set; }
 
-        public ParamClass(int i, string s)
+        public ParamClass(int i, DIClass a, string s = "param")
+        {
+            IntProperty = i;
+            StringProperty = s;
+            this.A = a;
+        }
+    }
+
+    public class MultiParamClass
+    {
+        public int IntProperty { get; set; }
+        public string StringProperty { get; set; }
+        public DIClass A { get; set; }
+
+        public MultiParamClass()
+        { }
+
+        public MultiParamClass(DIClass a, int i = 100, string s = "param")
+        {
+            IntProperty = i;
+            StringProperty = s;
+            this.A = a;
+        }
+
+        [AutoInject]
+        public MultiParamClass(int i = 200, string s = "inject")
         {
             IntProperty = i;
             StringProperty = s;
