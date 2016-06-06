@@ -64,6 +64,8 @@ namespace Ayx.CSLibrary.Utility.Config
         /// create an empty config file
         /// </summary>
         /// <param name="filename">config filename</param>
-        void CreateEmpty(string filename);
+        void CreateEmpty();
+
+        void Reload();
     }
 }

@@ -29,14 +29,12 @@ namespace Ayx.CSLibrary.Utility.Config
         /// <param name="filename"></param>
         public XmlConfigFile(string filename)
         {
-            if (!File.Exists(filename))
-            {
-                CreateEmpty(filename);
-            }
-
             FileName = filename;
-            Doc = new XmlDocument();
-            Doc.Load(filename);
+
+            if (!File.Exists(filename))
+                return;
+
+            Reload();
         }
 
         #region Interface Methods
@@ -105,14 +103,14 @@ namespace Ayx.CSLibrary.Utility.Config
         /// create an empty config file
         /// </summary>
         /// <param name="filename">config filename</param>
-        public void CreateEmpty(string filename)
+        public void CreateEmpty()
         {
             Doc = new XmlDocument();
             var declare = Doc.CreateXmlDeclaration("1.0", "utf-8", null);
             var root = Doc.CreateElement("Root");
             Doc.AppendChild(declare);
             Doc.AppendChild(root);
-            Doc.Save(filename);
+            Doc.Save(FileName);
         }
 
         /// <summary>
@@ -167,6 +165,12 @@ namespace Ayx.CSLibrary.Utility.Config
             node.InnerText = value;
             Doc.Save(FileName);
             return true;
+        }
+
+        public void Reload()
+        {
+            Doc = new XmlDocument();
+            Doc.Load(FileName);
         }
 
         #endregion
