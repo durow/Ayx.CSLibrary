@@ -14,7 +14,7 @@ namespace Ayx.CSLibrary.DI.Tests
         [TestMethod()]
         public void WireTest()
         {
-            var container = new DIContainer();
+            var container = new AyxContainer();
             container.Wire<DIClass>();
             container.Wire<ClassB>();
             container.Wire<ClassC>();
@@ -27,7 +27,7 @@ namespace Ayx.CSLibrary.DI.Tests
         [TestMethod]
         public void SingletonTest()
         {
-            var container = new DIContainer();
+            var container = new AyxContainer();
 
             container.WireSingleton<DIClass>();
             container.Wire<ClassB>();
@@ -42,7 +42,7 @@ namespace Ayx.CSLibrary.DI.Tests
         [TestMethod]
         public void AutoCreateTest()
         {
-            var container = new DIContainer();
+            var container = new AyxContainer();
 
             var test = container.Get<DIClass>();
             Assert.AreEqual(test.B.C.IntPorperty, 3333);
@@ -51,7 +51,7 @@ namespace Ayx.CSLibrary.DI.Tests
         [TestMethod]
         public void AutoCreateTest2()
         {
-            var container = new DIContainer();
+            var container = new AyxContainer();
 
             container.Wire<DIClass>();
             container.Wire<ClassB>();
@@ -64,7 +64,7 @@ namespace Ayx.CSLibrary.DI.Tests
         [TestMethod]
         public void ConstructorTest()
         {
-            var container = new DIContainer();
+            var container = new AyxContainer();
 
             var test = container.Get<ParamClass>();
 
@@ -76,7 +76,7 @@ namespace Ayx.CSLibrary.DI.Tests
         [TestMethod]
         public void MultiParamConstructorTest()
         {
-            var container = new DIContainer();
+            var container = new AyxContainer();
 
             var test = container.Get<MultiParamClass>();
 

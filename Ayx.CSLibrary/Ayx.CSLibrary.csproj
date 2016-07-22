@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -46,9 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DI\AutoInjectAttribute.cs" />
-    <Compile Include="DI\DIContainer.cs" />
+    <Compile Include="DI\AyxContainer.cs" />
     <Compile Include="DI\InjectInfo.cs" />
     <Compile Include="DI\InjectType.cs" />
+    <Compile Include="Extension\DateTimeExtension.cs" />
     <Compile Include="Extension\StringBuilderExtension.cs" />
     <Compile Include="Extension\StringExtension.cs" />
     <Compile Include="MVVM\AyxCommand.cs" />

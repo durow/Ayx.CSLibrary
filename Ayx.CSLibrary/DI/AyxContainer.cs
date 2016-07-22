@@ -13,15 +13,15 @@ using System.Windows;
 
 namespace Ayx.CSLibrary.DI
 {
-    public class DIContainer
+    public class AyxContainer
     {
-        private static DIContainer _default;
-        public static DIContainer Default
+        private static AyxContainer _default;
+        public static AyxContainer Default
         {
             get
             {
                 if (_default == null)
-                    _default = new DIContainer();
+                    _default = new AyxContainer();
                 return _default;
             }
         }
@@ -116,6 +116,13 @@ namespace Ayx.CSLibrary.DI
             return Get(typeof(TView), token);
         }
 
+        public T GetView<T>(string token="") where T : FrameworkElement
+        {
+            var result = Activator.CreateInstance<T>();
+            result.DataContext = GetVM<T>(token);
+            return result;
+        }
+
         public void Remove<T>(string token = "")
         {
             var find = false;
@@ -191,7 +198,6 @@ namespace Ayx.CSLibrary.DI
 
             var param = GetConstructorParameters(type).ToArray();
             var result = Activator.CreateInstance(type,param);
-            InjectPropertyDependency(result);
 
             return result;
         }
