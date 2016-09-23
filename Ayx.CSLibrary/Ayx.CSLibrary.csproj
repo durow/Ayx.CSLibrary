@@ -53,6 +53,8 @@
     <Compile Include="Extension\DateTimeExtension.cs" />
     <Compile Include="Extension\StringBuilderExtension.cs" />
     <Compile Include="Extension\StringExtension.cs" />
+    <Compile Include="IO\BitReader.cs" />
+    <Compile Include="IO\BitWriter.cs" />
     <Compile Include="MVVM\AyxCommand.cs" />
     <Compile Include="MVVM\AyxCommandGeneric.cs" />
     <Compile Include="MVVM\AyxEventCommand.cs" />
@@ -85,9 +87,7 @@
     <Compile Include="Utility\ScreenShot.cs" />
     <Compile Include="Utility\StopWatch.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="IO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
