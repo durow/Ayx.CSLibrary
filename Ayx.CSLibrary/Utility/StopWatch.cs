@@ -12,9 +12,8 @@ namespace Ayx.CSLibrary.Utility
         /// <summary>
         /// 创建一个秒表实例并将起始时间设置为当前时间
         /// </summary>
-        public StopWatch()
+        public StopWatch():this(DateTime.Now)
         {
-            StartDateTime = DateTime.Now;
         }
 
         /// <summary>
