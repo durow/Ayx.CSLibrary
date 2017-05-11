@@ -59,7 +59,7 @@ namespace Ayx.CSLibrary.IO
 
         private static char GetBitByPosition(byte b, int position)
         {
-            var v = b & (byte)Math.Pow(2, position);
+            var v = b & (1 << position);
             if (v == 0)
                 return '0';
             else
