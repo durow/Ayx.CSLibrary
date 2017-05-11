@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sky123.Org")]
 [assembly: AssemblyProduct("Ayx.CSLibraryTests")]
-[assembly: AssemblyCopyright("Copyright © Sky123.Org 2016")]
+[assembly: AssemblyCopyright("Copyright © Sky123.Org 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("8d64c684-a54b-467d-aee5-ea130618e539")]
+[assembly: Guid("dd7e603a-e578-488a-985d-c08ce95fcb06")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
